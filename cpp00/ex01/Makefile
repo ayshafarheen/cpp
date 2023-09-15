@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: afarheen <afarheen@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/12 11:16:37 by afarheen          #+#    #+#              #
+#    Updated: 2023/09/12 11:18:37 by afarheen         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = phonebook
 
-MY_SOURCES = PhoneBook.cpp
+MY_SOURCES = Contact.cpp PhoneBook.cpp
 
 MY_OBJS = $(MY_SOURCES:.cpp=.o)
 
