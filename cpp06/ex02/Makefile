@@ -6,17 +6,17 @@
 #    By: fathmanazmeen <fathmanazmeen@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 08:53:04 by afarheen          #+#    #+#              #
-#    Updated: 2024/02/24 15:03:39 by fathmanazme      ###   ########.fr        #
+#    Updated: 2024/02/24 19:10:10 by fathmanazme      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serialize
+NAME = identify
 
-MY_SOURCES = main.cpp Serializer.cpp
+MY_SOURCES = main.cpp A.cpp B.cpp C.cpp Base.cpp
 
 MY_OBJS = $(MY_SOURCES:.cpp=.o)
 
-CXXFLAGS =  -Wall -Wextra -Werror -std=c++98
+CXXFLAGS =  -Wall -Wextra  -std=c++98 # -Werror
 
 CXX = c++
 
