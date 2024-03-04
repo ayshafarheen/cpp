@@ -6,13 +6,13 @@
 #    By: fathmanazmeen <fathmanazmeen@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 08:53:04 by afarheen          #+#    #+#              #
-#    Updated: 2024/02/26 17:28:53 by fathmanazme      ###   ########.fr        #
+#    Updated: 2024/02/29 11:22:33 by fathmanazme      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = iter
 
-MY_SOURCES = main.cpp 
+MY_SOURCES = main.cpp MutantStack.hpp
 
 MY_OBJS = $(MY_SOURCES:.cpp=.o)
 
