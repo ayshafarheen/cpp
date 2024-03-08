@@ -20,6 +20,9 @@ class Intern
 		Intern & operator=(Intern & obj);
 		virtual ~Intern(void);
         AForm* makeForm(std::string name, std::string target);
+		AForm *makeShrub(std::string target);
+		AForm *makeRobot(std::string target);
+		AForm *makePresident(std::string target);
 };
 
 

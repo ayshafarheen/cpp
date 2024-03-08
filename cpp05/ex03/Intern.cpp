@@ -19,28 +19,38 @@ Intern &Intern::operator=(Intern & obj)
 	return *this;
 }
 
+AForm *Intern::makeShrub(std::string target)
+{
+    return (new ShrubberyCreationForm(target));
+}
+AForm *Intern::makeRobot(std::string target)
+{
+    return (new RobotomyRequestForm(target));
+}
+AForm *Intern::makePresident(std::string target)
+{
+    return (new PresidentialPardonForm(target));
+}
+
+
 AForm* Intern::makeForm(std::string name, std::string target)
 {
-    AForm *final = nullptr;
-    int choice = (name == "robotomy request") ? 1:
-                 (name == "presidential pardon") ? 2:
-                 (name == "shrubbery creation") ? 3:
-                  4;
-    switch(choice)
-    {
-        case 1: final = new RobotomyRequestForm(target);
-                break;
-        case 2: final = new PresidentialPardonForm(target);
-                break;
-        case 3: final = new ShrubberyCreationForm(target);
-                break;
-        default: std::cout << name << " does not exist!\n";
-    }
-    if (final)
+    AForm *final = 0;
+    int choice = (name == "robotomy request") ? 0:
+                 (name == "presidential pardon") ? 1:
+                 (name == "shrubbery creation") ? 2:
+                  3;
+    AForm *(Intern::*fnptr[])(std::string) = {&Intern::makeRobot,&Intern::makePresident,&Intern::makeShrub};
+    if (choice != 3)
     {
         std::cout << "Intern creates " << name << " form " << target << std::endl;
+       final = (this->*(fnptr[choice]))(target);
     }
-        return final;
+    else
+    {
+        std::cerr <<"Error! Invalid form!\n";
+    }
+    return final;
 }
 
 Intern::~Intern(void)
