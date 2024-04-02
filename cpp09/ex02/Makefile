@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fathmanazmeen <fathmanazmeen@student.42    +#+  +:+       +#+         #
+#    By: afarheen <afarheen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 08:53:04 by afarheen          #+#    #+#              #
-#    Updated: 2024/02/26 17:28:53 by fathmanazme      ###   ########.fr        #
+#    Updated: 2024/04/02 12:44:00 by afarheen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = iter
+NAME = PmergeMe
 
-MY_SOURCES = main.cpp 
+MY_SOURCES = main.cpp PmergeMe.cpp
 
 MY_OBJS = $(MY_SOURCES:.cpp=.o)
 
