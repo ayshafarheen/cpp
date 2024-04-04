@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fathmanazmeen <fathmanazmeen@student.42    +#+  +:+       +#+        */
+/*   By: afarheen <afarheen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:11:55 by afarheen          #+#    #+#             */
-/*   Updated: 2024/04/03 21:35:36 by fathmanazme      ###   ########.fr       */
+/*   Updated: 2024/04/04 14:57:26 by afarheen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ PmergeMe::PmergeMe(void)
 }
 PmergeMe::PmergeMe(PmergeMe &obj)
 {
-    *this = obj;
+	*this = obj;
 }
 PmergeMe::~PmergeMe(void)
 {
@@ -33,64 +33,120 @@ PmergeMe & PmergeMe::operator=(PmergeMe & obj)
 
 void PmergeMe::list_sort()
 {
+	std::list<int>::iterator it, it3;
+	std::list<std::pair<int,int> >::iterator it2;
+	std::list<std::pair<int,int> > p;
+	int struggler = -1;
+	std::list<int> a;
+	std::list<int> b;
+	for(it = lst.begin(); it != lst.end(); it += 2)
+	{
+		if(it+1 != lst.end())
+			p.push_back(std::pair<int, int>(*it,*(it+1)));
+		else
+		{
+			struggler = *it;
+			break;
+		}
+	}
+	for(it2 = p.begin(); it2 != p.end(); it2++)
+	{
+		if(it2->first < (it2)->second)
+			std::swap(it2->first, it2->second);
+	}
+	recur_sort(p, p.size() - 1) ;
+	for(it2 = partialv.begin(); it2 != partialv.end(); it2++)
+	{
+			a.push_back(it2->first);
+			b.push_back(it2->second);
+	}
+	if(struggler != -1)
+		b.push_back(struggler);
+	a.insert(a.begin(), 1, *(b.begin()));
+	b.erase (b.begin());
+	for(it = b.begin(); it != b.end(); it++)
+	{
+		for(it3 = a.begin(); it3 != a.end(); it3++)
+		{
+			if(*it <= *it3)
+			{
+				a.insert(it3, 1, *it);
+				break;
+			}
+		}
+	}
+}
+void PmergeMe::recur_insert(std::pair<int,int> ele, int n)
+{
+	if(n < 0)
+	{
+		if (partialv.empty())
+			partialv.push_back(ele);
+		else
+			partialv.insert(partialv.begin(), 1, ele);
+	}
+	else if (ele.first >= partialv[n].first)
+		partialv.insert(partialv.begin() + n + 1, 1, ele);
+	else
+		recur_insert(ele, n - 1);
+}
 
+void PmergeMe::recur_sort(std::vector<std::pair<int,int> > p, int n)
+{
+	std::vector<std::pair<int,int> >::iterator it2;
+	if(n < 0)
+		return ;
+	else
+	{
+		recur_sort(p, n - 1);
+		recur_insert(p[n], n - 1);
+	}
 }
 
 void PmergeMe::vec_sort()
 {
-    std::vector<int>::iterator it, it2;
-    std::vector<int> a;
-    std::vector<int> b;
-    for(it = vec.begin(); it != vec.end(); it += 2)
-    {
-        if(it + 1 != vec.end())
-        {
-            if((*it) > *(it + 1))
-                std::swap(*it, *(it+1));
-        }
-        else
-            break;
-    }
-    for(it = vec.begin(); it != vec.end(); it += 2)
-    {
-        if(it + 1 != vec.end())
-        {
-            if((*it) > *(it + 1))
-                std::swap(*it, *(it+1));
-        }
-        else
-            break;
-    }
-    // for(it = vec.begin(); it != vec.end(); it+=2)
-    // {
-    //     if((it + 1) == vec.end() && vec.size() % 2 != 0)
-    //     {
-    //         b.push_back(*(it));
-    //         break;
-    //     }
-    //     else
-    //     {
-    //         b.push_back(*(it+1));
-    //         a.push_back(*it);
-    //     }
-    // }
-    // b.insert(a.begin(),3);
-    // for(it = b.begin(); it != b.end(); it++)
-    // {
-    //     for(it2 = b.begin(); it != b.end(); it2++)
-    //     {
-    //         if((*it) > *(it + 1))
-    //     }
-    // }
-    // for(it = a.begin(); it != a.end(); it++)
-    // {
-    //     std::cout << *it << " ";
-    // }
-    // std::cout << "\n";
-    // for(it = b.begin(); it != b.end(); it++)
-    // {
-    //     std::cout << *it << " ";
-    // }
+	std::vector<int>::iterator it, it3;
+	std::vector<std::pair<int,int> >::iterator it2;
+	std::vector<std::pair<int,int> > p;
+	int struggler = -1;
+	std::vector<int> a;
+	std::vector<int> b;
+	for(it = vec.begin(); it != vec.end(); it += 2)
+	{
+		if(it+1 != vec.end())
+			p.push_back(std::pair<int, int>(*it,*(it+1)));
+		else
+		{
+			struggler = *it;
+			break;
+		}
+	}
+	for(it2 = p.begin(); it2 != p.end(); it2++)
+	{
+		if(it2->first < (it2)->second)
+			std::swap(it2->first, it2->second);
+	}
+	recur_sort(p, p.size() - 1) ;
+	for(it2 = partialv.begin(); it2 != partialv.end(); it2++)
+	{
+			a.push_back(it2->first);
+			b.push_back(it2->second);
+	}
+	if(struggler != -1)
+		b.push_back(struggler);
+	a.insert(a.begin(), 1, *(b.begin()));
+	b.erase (b.begin());
+	for(it = b.begin(); it != b.end(); it++)
+	{
+		for(it3 = a.begin(); it3 != a.end(); it3++)
+		{
+			if(*it <= *it3)
+			{
+				a.insert(it3, 1, *it);
+				break;
+			}
+		}
+	}
 }
 
 void PmergeMe::check_args(char **args)
@@ -118,7 +174,6 @@ void PmergeMe::check_args(char **args)
 		else
 			throw(std::exception());
 		i++;
-	// list_sort();
 	}
 	vec_sort();
 }

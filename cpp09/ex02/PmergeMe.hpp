@@ -18,6 +18,7 @@ class PmergeMe
 	private:
 		std::vector<int> vec;
 		std::list<int> lst;
+		std::vector<std::pair<int,int> > partialv;
 	public:
 		PmergeMe(void);
 		PmergeMe(PmergeMe &obj);
@@ -26,6 +27,8 @@ class PmergeMe
 		void check_args(char **args);
 		void vec_sort();
 		void list_sort();
+		void recur_sort(std::vector<std::pair<int,int> > p, int n);
+		void recur_insert(std::pair<int,int> ele, int n);
 };
 
 
