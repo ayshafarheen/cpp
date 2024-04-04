@@ -19,6 +19,7 @@ class PmergeMe
 		std::vector<int> vec;
 		std::list<int> lst;
 		std::vector<std::pair<int,int> > partialv;
+		std::list<std::pair<int,int> > partiallst;
 	public:
 		PmergeMe(void);
 		PmergeMe(PmergeMe &obj);
@@ -27,10 +28,11 @@ class PmergeMe
 		void check_args(char **args);
 		void vec_sort();
 		void list_sort();
-		void recur_sort(std::vector<std::pair<int,int> > p, int n);
-		void recur_insert(std::pair<int,int> ele, int n);
+		void recur_sort_vec(std::vector<std::pair<int,int> > p, int n);
+		void recur_insert_vec(std::pair<int,int> ele, int n);
+		void recur_sort_list(std::list<std::pair<int,int> > p, int n);
+		void recur_insert_list(std::pair<int,int> ele, int n);
 };
 
 
 #endif
-
