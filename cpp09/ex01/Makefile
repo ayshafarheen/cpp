@@ -6,17 +6,17 @@
 #    By: fathmanazmeen <fathmanazmeen@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 08:53:04 by afarheen          #+#    #+#              #
-#    Updated: 2024/02/26 17:28:53 by fathmanazme      ###   ########.fr        #
+#    Updated: 2024/03/31 09:16:57 by fathmanazme      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = iter
+NAME = RPN
 
-MY_SOURCES = main.cpp 
+MY_SOURCES = main.cpp RPN.cpp
 
 MY_OBJS = $(MY_SOURCES:.cpp=.o)
 
-CXXFLAGS =  -Wall -Wextra -Werror -std=c++98
+CXXFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 CXX = c++
 
